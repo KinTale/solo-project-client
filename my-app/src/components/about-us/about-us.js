@@ -15,16 +15,19 @@ export default function AboutUs() {
         color: 'primary.main',
         fontSize: '2rem'
     }
-    return (
-        <Box sx={{
+    const aboutUsContainer = {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center'
-        }}>
+        }
+    return (
+        <Box sx={aboutUsContainer}>
+
             <img src={AboutUs1} alt='three buddhas' style={{
                 maxWidth: 800
             }} />
+            
             <Paper elevation={3} sx={paperStyle} >
                 <AboutUsOne />
                 <img src={AboutUs2} alt='rinpoche' style={{
