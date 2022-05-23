@@ -11,7 +11,7 @@ export default function AboutUs() {
         width: 800,
         mb: 50,
         backgroundColor: 'background.paper',
-        padding: 8,
+        padding: 5,
         color: 'primary.main',
         fontSize: '2rem'
     }
@@ -27,7 +27,7 @@ export default function AboutUs() {
             <img src={AboutUs1} alt='three buddhas' style={{
                 maxWidth: 800
             }} />
-            
+
             <Paper elevation={3} sx={paperStyle} >
                 <AboutUsOne />
                 <img src={AboutUs2} alt='rinpoche' style={{

@@ -52,11 +52,11 @@ export default function Slider() {
         borderRadius: 1,
         top: 205,
         left: 750,
+        zIndex: 2,
         ":hover": {
             bgcolor: 'rgba(0, 0, 0, .595)'
         }
     }
-
     const sliderContainer = {
         display: 'flex',
         alignItems: 'center',
@@ -73,17 +73,19 @@ export default function Slider() {
 
             <IconButton onClick={previousSlide} sx={sliderButton}> <ChevronLeftIcon /></IconButton>
             <IconButton onClick={nextSlide} sx={sliderButton}>  <ChevronRightIcon /></IconButton>
+            <Box>
+                {pictures.map((picture, index) => {
+                    return (
+                        <div className={index === current ? 'current-slide' : null} key={index}>
+                            {index === current && (<img src={picture.imgPath}
+                                alt={picture.label}
+                                style={imageStyle} />
+                            )}
+                        </div>
+                    )
+                })}
+            </Box>
 
-            {pictures.map((picture, index) => {
-                return (
-                    <div className={index === current ? 'current-slide' : 'slide'} key={index}>
-                        {index === current && (<img src={picture.imgPath}
-                            alt={picture.label}
-                            style={imageStyle} />
-                        )}
-                    </div>
-                )
-            })}
         </Box>
     )
 }
