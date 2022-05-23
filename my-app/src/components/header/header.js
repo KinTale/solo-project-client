@@ -8,16 +8,14 @@ export default function Header() {
         <Box
             sx={{
                 display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
+                justifyContent: 'center',
                 backgroundColor: 'primary.main',
-      
+                minWidth: '100vw'
             }}
         >
             <img
                 src={Logo}
                 alt='logo'
-               
             />
         </Box>
     )

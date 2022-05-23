@@ -3,6 +3,7 @@ import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import { Box } from '@mui/system'
 import styled from '@emotion/styled';
+import { Link } from 'react-router-dom';
 
 export default function NavBar() {
 
@@ -13,25 +14,26 @@ export default function NavBar() {
             backgroundColor: theme.palette.primary.main
         }
     }))
+    const linkDeco = { textDecoration: 'none' }
 
+    const buttonContainer = {
+        backgroundColor: 'secondary.main',
+        minWidth: '100vw',
+        display: 'flex',
+        justifyContent: 'center',
+        '& > *': {
+            m: 0.5,
+            textDecoration: '',
+        },
+    }
     return (
-        <Box
-            sx={{
-                backgroundColor: 'secondary.main',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                '& > *': {
-                    m: 1,
-                },
-            }}
-        >
-            <ButtonGroup variant="text" aria-label="text button group">
-                <NavButton >Home</NavButton>
-                <NavButton >About us</NavButton>
+        <Box sx={buttonContainer}>
+            <ButtonGroup variant="string" >
+                <Link to='/' style={linkDeco}> <NavButton   >Home</NavButton></Link>
+                <Link to='/aboutus' style={linkDeco}> <NavButton >About us</NavButton></Link>
                 <NavButton >Members</NavButton>
-                <NavButton >events</NavButton>
-                <NavButton >contact us</NavButton>
+                {/* <NavButton >events</NavButton> */}
+                <Link to='/contactus' style={linkDeco}> <NavButton >contact us</NavButton></Link>
             </ButtonGroup>
         </Box>
     );
