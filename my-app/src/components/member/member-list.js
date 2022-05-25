@@ -20,7 +20,7 @@ export default function MembersList() {
             justifyContent: 'center',
             mt:5
         }}>
-            <Paper sx={paperStyle}>
+            <Paper elevation={3} sx={paperStyle}>
             <Typography variant='h4' gutterBottom >Members list<hr style={ {border:'1px solid '}}></hr></Typography>
                 <ImageList sx={{
                     display: 'inline-flex',
