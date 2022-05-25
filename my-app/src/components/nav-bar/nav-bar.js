@@ -31,7 +31,7 @@ export default function NavBar() {
             <ButtonGroup variant="string" >
                 <Link to='/' style={linkDeco}> <NavButton   >Home</NavButton></Link>
                 <Link to='/aboutus' style={linkDeco}> <NavButton >About us</NavButton></Link>
-                <NavButton >Members</NavButton>
+                <Link to='/members' style={linkDeco}> <NavButton >Members</NavButton></Link>
                 {/* <NavButton >events</NavButton> */}
                 <Link to='/contactus' style={linkDeco}> <NavButton >contact us</NavButton></Link>
             </ButtonGroup>

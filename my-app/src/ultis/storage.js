@@ -1,14 +1,14 @@
 const storage = {
-    saveStorage: (token, userId, role) => {
+    saveStorage: (token, adminId, role) => {
         localStorage.setItem(process.env.REACT_APP_USER_TOKEN, token);
-        localStorage.setItem('userId', userId);
+        localStorage.setItem('adminId', adminId);
         localStorage.setItem('role', role);
     },
 
     loadStorage: () => {
         const local = {
             token: localStorage.getItem(process.env.REACT_APP_USER_TOKEN),
-            userId: localStorage.getItem('userId'),
+            adminId: localStorage.getItem('adminId'),
             role: localStorage.getItem('role'),
         };
         if (!local.token) {
@@ -19,7 +19,7 @@ const storage = {
 
     clearStorage: () => {
         localStorage.setItem(process.env.REACT_APP_USER_TOKEN, '');
-        localStorage.setItem('userId', '');
+        localStorage.setItem('adminId', '');
         localStorage.setItem('role', '');
     }
 };
