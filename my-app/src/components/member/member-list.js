@@ -2,8 +2,9 @@ import * as React from 'react';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
-import { Avatar, Box, Typography, Paper } from '@mui/material';
-export default function MembersList() {
+import { Avatar, Box, Typography, Paper, Button } from '@mui/material';
+
+export default function MembersList({ role }) {
     const paperStyle = {
         width: 800,
         mb: 50,
@@ -18,26 +19,36 @@ export default function MembersList() {
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            mt:5
+            mt: 5
         }}>
             <Paper elevation={3} sx={paperStyle}>
-            <Typography variant='h4' gutterBottom >Members list<hr style={ {border:'1px solid '}}></hr></Typography>
+                <Typography variant='h4' gutterBottom >Members list
+
+                    {role === 'ADMIN' && (
+                        <Box>
+                            <Button size="small">Add Member</Button>
+
+                        </Box>
+                    )}
+
+
+                    <hr style={{ border: '1px solid ' }}></hr></Typography>
                 <ImageList sx={{
                     display: 'inline-flex',
                     flexWrap: 'wrap',
                     width: 800,
-                    p: 5,
-
-
+                    p: 2,
                 }}>
 
-                    {itemData.map((item) => (
-                        <ImageListItem key={item.img} sx={{p: 1}}>
-                            <Avatar></Avatar>
+                    {itemData.map((item, index) => (
+                        <ImageListItem key={index} sx={{ p: 1 }}>
+                            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                                <Avatar></Avatar>
+                            </Box>
 
                             <ImageListItemBar
-                                title={item.title}
-                                subtitle={<span>by: {item.position}</span>}
+                                title={<Typography variant='h7' fontWeight='bold'>{item.title}</Typography>}
+                                subtitle={<Typography variant='subtitle1'>{item.position}</Typography>}
                                 position="below"
                             />
                         </ImageListItem>

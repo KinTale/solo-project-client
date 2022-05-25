@@ -3,8 +3,10 @@ import { useState } from 'react';
 import client from "../../ultis/client";
 import AdminForm from "./log-in-form";
 import storage from "../../ultis/storage";
+import { useNavigate } from 'react-router-dom';
 
-export default function LogIn() {
+export default function LogIn({ setLoggedIn }) {
+    let navigate = useNavigate();
     const [admin, setAdmin] = useState({
         email: '',
         password: ''
@@ -31,6 +33,8 @@ export default function LogIn() {
             .then((res) => {
                 const { id, role } = res.data.foundAdmin
                 storage.saveStorage(res.data.token, id, role)
+                setLoggedIn(storage.loadStorage())
+                navigate('/')
             })
     }
 

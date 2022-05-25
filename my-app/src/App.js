@@ -9,20 +9,35 @@ import MembersList from './components/member/member-list';
 import LogIn from './components/log-in/log-in';
 import { Container } from '@mui/material';
 import '../src/app.css'
+import { useState, useEffect } from 'react';
+import storage from './ultis/storage';
+
+
 function App() {
+  const [loggedIn, setLoggedIn] = useState(false)
+
+  useEffect(() => {
+    setLoggedIn(storage.loadStorage())
+  }, [])
+
+  console.log('logged in ', loggedIn)
+  if (loggedIn === null) {
+    return <div className='App'></div>;
+  }
+
   return (
 
     <>
       <Container className='app'>
         <Header />
-        <NavBar />
+        <NavBar role={loggedIn.role} setLoggedIn={setLoggedIn}/>
         <Routes>
           <Route>
             <Route path='/' element={<Main />} />
             <Route path='/aboutus' element={<AboutUs />} />
-            <Route path='/members' element={<MembersList />} />
+            <Route path='/members' element={<MembersList role={loggedIn.role}/>} />
             <Route path='/contactus' element={<ContactUs />} />
-            <Route path='/login' element={<LogIn />} />
+            <Route path='/login' element={<LogIn setLoggedIn={setLoggedIn}/>} />
           </Route>
         </Routes>
       </Container>
