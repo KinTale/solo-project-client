@@ -6,6 +6,7 @@ import Main from './components/main-page/main';
 import AboutUs from './components/about-us/about-us';
 import ContactUs from './components/contact-us/contact-us';
 import MembersList from './components/member/member-list';
+import AddMember from './components/member/add-member';
 import LogIn from './components/log-in/log-in';
 import { Container } from '@mui/material';
 import '../src/app.css'
@@ -38,6 +39,7 @@ function App() {
             <Route path='/members' element={<MembersList role={loggedIn.role}/>} />
             <Route path='/contactus' element={<ContactUs />} />
             <Route path='/login' element={<LogIn setLoggedIn={setLoggedIn}/>} />
+            <Route path='/addmember' element={ <AddMember />}/>
           </Route>
         </Routes>
       </Container>

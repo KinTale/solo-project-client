@@ -1,8 +1,11 @@
-import * as React from 'react';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
-import { Avatar, Box, Typography, Paper, Button } from '@mui/material';
+import { Avatar, Box, Typography, Paper, Button, Link } from '@mui/material';
+import { useState } from 'react';
+import AddMemberForm from './add-member';
+
+
 
 export default function MembersList({ role }) {
     const paperStyle = {
@@ -13,25 +16,34 @@ export default function MembersList({ role }) {
         color: 'primary.main',
         fontSize: '2rem'
     }
+    const [open, setOpen] = useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
     return (
         <Box sx={{
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            mt: 5
+       mt: -5
         }}>
+            <AddMemberForm open={open} handleClose={handleClose} />
             <Paper elevation={3} sx={paperStyle}>
                 <Typography variant='h4' gutterBottom >Members list
-
                     {role === 'ADMIN' && (
                         <Box>
-                            <Button size="small">Add Member</Button>
+                            <Link to='/addmember'><Button size="small" onClick={handleClickOpen} >Add Member</Button></Link>
 
                         </Box>
                     )}
-
-
+                    
                     <hr style={{ border: '1px solid ' }}></hr></Typography>
                 <ImageList sx={{
                     display: 'inline-flex',
@@ -56,7 +68,9 @@ export default function MembersList({ role }) {
 
                 </ImageList>
             </Paper>
+
         </Box>
+
     );
 }
 
