@@ -4,11 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { TextField, Slide, DialogActions, Dialog, Box, Button, Typography } from '@mui/material';
 
+
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function AddMemberForm({ open, handleClose }) {
+export default function AddMemberForm({ open, handleClose, resetMembers, setResetMembers }) {
 
     const blankForm = {
         name: '',
@@ -27,11 +28,14 @@ export default function AddMemberForm({ open, handleClose }) {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        client.post('/members', member)
+        client.post('/members/addmember', member)
             .then((res) => {
+                setResetMembers(resetMembers + 1)
                 navigate('/members')
+                console.log('added member client', res)
             })
             .catch((err) => console.log(err.response))
+
     }
 
     const formContainer = {
@@ -58,7 +62,7 @@ export default function AddMemberForm({ open, handleClose }) {
                 aria-describedby="alert-dialog-slide-description"
             >
                 <form onSubmit={handleSubmit} style={formContainer}>
-                     <Typography variant='h6'sx={{ color: 'primary.main' }}>Add new member</Typography>
+                    <Typography variant='h6' sx={{ color: 'primary.main' }}>Add new member</Typography>
                     <TextField
                         className='user-form-input'
                         value={member.name}

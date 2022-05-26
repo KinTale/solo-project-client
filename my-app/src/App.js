@@ -31,15 +31,15 @@ function App() {
     <>
       <Container className='app'>
         <Header />
-        <NavBar role={loggedIn.role} setLoggedIn={setLoggedIn}/>
+        <NavBar role={loggedIn.role} setLoggedIn={setLoggedIn} />
         <Routes>
           <Route>
             <Route path='/' element={<Main />} />
             <Route path='/aboutus' element={<AboutUs />} />
-            <Route path='/members' element={<MembersList role={loggedIn.role}/>} />
+            <Route path='/members' element={<MembersList role={loggedIn.role} />} />
             <Route path='/contactus' element={<ContactUs />} />
-            <Route path='/login' element={<LogIn setLoggedIn={setLoggedIn}/>} />
-            <Route path='/addmember' element={ <AddMember />}/>
+            <Route path='/login' element={<LogIn setLoggedIn={setLoggedIn} />} />
+            <Route path='/addmember' element={<AddMember />} />
           </Route>
         </Routes>
       </Container>

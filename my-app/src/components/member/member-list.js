@@ -2,9 +2,10 @@ import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import { Avatar, Box, Typography, Paper, Button, Link } from '@mui/material';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import AddMemberForm from './add-member';
-
+import client from '../../ultis/client';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 
 export default function MembersList({ role }) {
@@ -16,7 +17,15 @@ export default function MembersList({ role }) {
         color: 'primary.main',
         fontSize: '2rem'
     }
+    const [currenMembers, setCurrentMembers] = useState([])
     const [open, setOpen] = useState(false);
+    const [resetMembers, setResetMembers] = useState(0)
+
+    useEffect(() => {
+        client.get('/members/memberlist')
+            .then((res) => setCurrentMembers(res.data.data))
+            .catch((err) => console.log(err.response))
+    }, [resetMembers])
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -25,42 +34,47 @@ export default function MembersList({ role }) {
     const handleClose = () => {
         setOpen(false);
     };
+    const handleDelete = (memberId) => {
 
+        client.delete(`/members/delete/${memberId}`)
+            .then((res) => setResetMembers(resetMembers + 1))
+            .catch((err) => console.log(err.response))
+    };
+    console.log('state', currenMembers)
     return (
         <Box sx={{
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-       mt: -5
+            mt: -5
         }}>
-            <AddMemberForm open={open} handleClose={handleClose} />
+            <AddMemberForm open={open} handleClose={handleClose} resetMembers={resetMembers} setResetMembers={setResetMembers} />
             <Paper elevation={3} sx={paperStyle}>
-                <Typography variant='h4' gutterBottom >Members list
+                <Typography variant='h4' gutterBottom >Current members
                     {role === 'ADMIN' && (
                         <Box>
                             <Link to='/addmember'><Button size="small" onClick={handleClickOpen} >Add Member</Button></Link>
-
                         </Box>
                     )}
-                    
                     <hr style={{ border: '1px solid ' }}></hr></Typography>
                 <ImageList sx={{
                     display: 'inline-flex',
                     flexWrap: 'wrap',
-                    width: 800,
+                    width: 810,
                     p: 2,
                 }}>
 
-                    {itemData.map((item, index) => (
-                        <ImageListItem key={index} sx={{ p: 1 }}>
+                    {currenMembers.map((member, index) => (
+                        <ImageListItem key={index} sx={{ display: 'flex', flexWrap: 'wrap', p: 1, width: 150, mr: 5 }}>
                             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                                <Avatar></Avatar>
+                                <Avatar variant="square" sx={{ width: 84, height: 84 }}></Avatar>
+                                <Button onClick={() => handleDelete(member.id)} ><DeleteIcon /></Button>
                             </Box>
 
                             <ImageListItemBar
-                                title={<Typography variant='h7' fontWeight='bold'>{item.title}</Typography>}
-                                subtitle={<Typography variant='subtitle1'>{item.position}</Typography>}
+                                title={<Typography variant='h7' fontWeight='bold'>{member.name}</Typography>}
+                                subtitle={<Typography variant='subtitle1'>{member.title}</Typography>}
                                 position="below"
                             />
                         </ImageListItem>
@@ -73,71 +87,3 @@ export default function MembersList({ role }) {
 
     );
 }
-
-const itemData = [
-    {
-        img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
-        title: 'Ang Dawa Sheepa',
-        position: 'Chairman',
-    },
-    {
-        img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
-        title: 'Motilal Tamang ',
-        position: 'Vice chairmen',
-    },
-    {
-        img: 'https://images.unsplash.com/photo-1522770179533-24471fcdba45',
-        title: 'Gamar Singh Gurung',
-        position: 'Vice chairmen',
-    },
-    {
-        img: 'https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c',
-        title: 'Gopal Tamang',
-        position: 'Manager',
-    },
-    {
-        img: 'https://images.unsplash.com/photo-1533827432537-70133748f5c8',
-        title: 'Dev Gurung',
-        position: 'Tresurer',
-    },
-    {
-        img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
-        title: 'Motilal Tamang ',
-        position: 'Vice chairmen',
-    },
-    {
-        img: 'https://images.unsplash.com/photo-1522770179533-24471fcdba45',
-        title: 'Gamar Singh Gurung',
-        position: 'Vice chairmen',
-    },
-    {
-        img: 'https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c',
-        title: 'Gopal Tamang',
-        position: 'Manager',
-    },
-    {
-        img: 'https://images.unsplash.com/photo-1533827432537-70133748f5c8',
-        title: 'Dev Gurung',
-        position: 'Tresurer',
-    }, {
-        img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
-        title: 'Motilal Tamang ',
-        position: 'Vice chairmen',
-    },
-    {
-        img: 'https://images.unsplash.com/photo-1522770179533-24471fcdba45',
-        title: 'Gamar Singh Gurung',
-        position: 'Vice chairmen',
-    },
-    {
-        img: 'https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c',
-        title: 'Gopal Tamang',
-        position: 'Manager',
-    },
-    {
-        img: 'https://images.unsplash.com/photo-1533827432537-70133748f5c8',
-        title: 'Dev Gurung',
-        position: 'Tresurer',
-    },
-
-];
