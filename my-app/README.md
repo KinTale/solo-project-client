@@ -26,7 +26,7 @@
   the way you can create customizable responsive components incredibly fast with Mui was a joy to use!
 
   #Diagrams
-  ![Alt text] ERD/Screenshot 2022-05-26 at 16.52.48.png
+  ![](ERD/Screenshot%202022-05-26%20at%2016.52.48.png)
 
   #Learnings
 
