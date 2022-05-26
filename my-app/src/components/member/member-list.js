@@ -69,7 +69,9 @@ export default function MembersList({ role }) {
                         <ImageListItem key={index} sx={{ display: 'flex', flexWrap: 'wrap', p: 1, width: 150, mr: 5 }}>
                             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                                 <Avatar variant="square" sx={{ width: 84, height: 84 }}></Avatar>
-                                <Button onClick={() => handleDelete(member.id)} ><DeleteIcon /></Button>
+                                {role === 'ADMIN' && (
+                                    <Button onClick={() => handleDelete(member.id)} ><DeleteIcon /></Button>
+                                )}
                             </Box>
 
                             <ImageListItemBar

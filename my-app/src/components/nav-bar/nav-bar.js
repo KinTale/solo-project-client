@@ -37,11 +37,12 @@ export default function NavBar({ role, setLoggedIn }) {
     return (
         <Box sx={buttonContainer}>
             <ButtonGroup variant="string" >
-                <Link to='/' style={linkDeco}> <NavButton   >Home</NavButton></Link>
+                <Link to='/' style={linkDeco}> <NavButton >Home</NavButton></Link>
                 <Link to='/aboutus' style={linkDeco}> <NavButton >About us</NavButton></Link>
                 <Link to='/members' style={linkDeco}> <NavButton >Members</NavButton></Link>
                 {/* <NavButton >events</NavButton> */}
-                <Link to='/contactus' style={linkDeco}> <NavButton >contact us</NavButton></Link>
+                <Link to='/inventory' style={linkDeco}> <NavButton >Inventory</NavButton></Link>
+                <Link to='/contactus' style={linkDeco}> <NavButton >Contact us</NavButton></Link>
                 {role === 'ADMIN' && (
                     <NavButton onClick={signOut} >Sign out</NavButton>
                 )}
