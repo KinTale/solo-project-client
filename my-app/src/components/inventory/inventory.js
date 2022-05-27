@@ -6,7 +6,7 @@ import { Box, Table, TableBody, TableContainer, Link, Button, Typography } from 
 import Paper from '@mui/material/Paper';
 import TableRows from './inventory-row';
 import TableHeader from './inventory-header';
-
+import AddItemForm from './add-inventory';
 export default function InventoryTable({ role }) {
     const [open, setOpen] = useState(false);
     const [items, setItems] = useState([])
@@ -50,7 +50,7 @@ export default function InventoryTable({ role }) {
                 gap: 5
             }}>
                 <Typography variant='h4' gutterBottom sx={fontStyle}>BCCUK London Branch Property Inventory <hr style={{ border: '1px solid ' }}></hr></Typography>
-
+                <AddItemForm open={open} handleClose={handleClose} resetMembers={resetMembers} setResetMembers={setResetMembers}/>
                 {role === 'ADMIN' && (
                     <Box>
                         <Link to='/additem'><Button size="small" onClick={handleClickOpen} >Add item</Button></Link>
@@ -65,7 +65,7 @@ export default function InventoryTable({ role }) {
             }}>
                 <Table aria-label="simple table">
 
-                    <TableHeader open={open} handleClose={handleClose} resetMembers={resetMembers} setResetMembers={setResetMembers} />
+                    <TableHeader  />
                     <TableBody>
                         {items.map((item, index) => (
                             <React.Fragment key={index}>

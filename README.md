@@ -1,6 +1,7 @@
 Project description:
-For my project I wanted to build a simple london branch website for a charity run buddhist community who my father is a part of. He will be the one manging the website so my gaol was to keep the UI simple, easy to update and manage.
+For my solo project I wanted to build a simple london branch website for a charity run buddhist community who my father is a part of. He will be the one manging the website so my gaol was to keep the UI simple, easy to update and manage.
 
+Backend repo - <https://github.com/KinTale/solo-project-server>
 --- non Admin :
 - can view details about the chairty
 - check member list
@@ -11,11 +12,13 @@ For my project I wanted to build a simple london branch website for a charity ru
 - log in and sign out
 - add new members
 - delete existing members
+- add items to the inventory table
 
 Setup instructions:
 npm ci
 
 Approach :
+- 
 - Learning more about Mui and solifiying my knowledge in React was also one of my goals for this project,
   the way you can create customizable responsive components incredibly fast with Mui was a joy to use!
 
