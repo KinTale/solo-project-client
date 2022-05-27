@@ -31,6 +31,7 @@ export default function AddMemberForm({ open, handleClose, resetMembers, setRese
         client.post('/members/addmember', member)
             .then((res) => {
                 setResetMembers(resetMembers + 1)
+                setMember(blankForm)
                 navigate('/members')
                 console.log('added member client', res)
             })

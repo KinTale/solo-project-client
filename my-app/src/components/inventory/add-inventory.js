@@ -34,6 +34,7 @@ export default function AddItemForm({ open, handleClose, resetMembers, setResetM
         client.post('/inventory/additem', item)
             .then((res) => {
                 setResetMembers(resetMembers + 1)
+                setItem(blankForm)
                 navigate('/inventory')
                 console.log('added inventory item client', res)
             })
