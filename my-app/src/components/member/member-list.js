@@ -40,6 +40,7 @@ export default function MembersList({ role }) {
             .then((res) => setResetMembers(resetMembers + 1))
             .catch((err) => console.log(err.response))
     };
+    
     console.log('state', currenMembers)
     return (
         <Box sx={{
@@ -47,7 +48,7 @@ export default function MembersList({ role }) {
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            mt: -5
+            mt: -6
         }}>
             <AddMemberForm open={open} handleClose={handleClose} resetMembers={resetMembers} setResetMembers={setResetMembers} />
             <Paper elevation={3} sx={paperStyle}>

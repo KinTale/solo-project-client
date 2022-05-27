@@ -9,18 +9,21 @@ const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function AddMemberForm({ open, handleClose, resetMembers, setResetMembers }) {
+export default function AddItemForm({ open, handleClose, resetMembers, setResetMembers }) {
 
     const blankForm = {
-        name: '',
-        title: '',
+        description: '',
+        quantity: '',
+        sponsored: '',
+        price: '',
+        location: '',
     }
-    const [member, setMember] = useState(blankForm)
+    const [item, setItem] = useState(blankForm)
 
     const handleChange = (event) => {
         const { value, name } = event.target
-        setMember({
-            ...member,
+        setItem({
+            ...item,
             [name]: value
         })
     }
@@ -28,11 +31,11 @@ export default function AddMemberForm({ open, handleClose, resetMembers, setRese
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        client.post('/members/addmember', member)
+        client.post('/inventory/additem', item)
             .then((res) => {
                 setResetMembers(resetMembers + 1)
-                navigate('/members')
-                console.log('added member client', res)
+                navigate('/inventory')
+                console.log('added inventory item client', res)
             })
             .catch((err) => console.log(err.response))
 
@@ -53,7 +56,6 @@ export default function AddMemberForm({ open, handleClose, resetMembers, setRese
     }
     return (
         <Box sx={addMemberContainer}>
-
             <Dialog
                 open={open}
                 TransitionComponent={Transition}
@@ -65,21 +67,42 @@ export default function AddMemberForm({ open, handleClose, resetMembers, setRese
                     <Typography variant='h6' sx={{ color: 'primary.main' }}>Add new member</Typography>
                     <TextField
                         className='user-form-input'
-                        value={member.name}
+                        value={item.description}
                         variant='outlined'
-                        name='name'
+                        name='description'
                         onChange={handleChange}
-                        placeholder='Name' sx={{ bgcolor: 'white' }} />
+                        placeholder='Description' sx={{ bgcolor: 'white' }} />
                     <TextField
                         className='user-form-input'
-                        value={member.title}
+                        value={item.quantity}
                         variant='outlined'
-                        name='title'
+                        name='quantity'
                         onChange={handleChange}
-                        placeholder='Title' sx={{ bgcolor: 'white' }} />
+                        placeholder='Quantity' sx={{ bgcolor: 'white' }} />
+                        <TextField
+                        className='user-form-input'
+                        value={item.sponsored}
+                        variant='outlined'
+                        name='sponsored'
+                        onChange={handleChange}
+                        placeholder='Sponsored' sx={{ bgcolor: 'white' }} />
+                        <TextField
+                        className='user-form-input'
+                        value={item.price}
+                        variant='outlined'
+                        name='price'
+                        onChange={handleChange}
+                        placeholder='Price' sx={{ bgcolor: 'white' }} />
+                        <TextField
+                        className='user-form-input'
+                        value={item.location}
+                        variant='outlined'
+                        name='location'
+                        onChange={handleChange}
+                        placeholder='Location' sx={{ bgcolor: 'white' }} />
                     <DialogActions>
                         <Button type='submit' variant='contained' onClick={handleClose} >
-                            Create Member
+                            Add item
                         </Button>
                     </DialogActions>
                 </form >

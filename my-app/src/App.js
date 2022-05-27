@@ -13,6 +13,7 @@ import '../src/app.css'
 import { useState, useEffect } from 'react';
 import storage from './ultis/storage';
 import Inventory from './components/inventory/inventory';
+import AddItemForm from './components/inventory/add-inventory';
 
 
 function App() {
@@ -38,10 +39,11 @@ function App() {
             <Route path='/' element={<Main />} />
             <Route path='/aboutus' element={<AboutUs />} />
             <Route path='/members' element={<MembersList role={loggedIn.role} />} />
-            <Route path='/inventory' element={<Inventory />} />
+            <Route path='/inventory' element={<Inventory role={loggedIn.role} />} />
             <Route path='/contactus' element={<ContactUs />} />
             <Route path='/login' element={<LogIn setLoggedIn={setLoggedIn} />} />
             <Route path='/addmember' element={<AddMember />} />
+            <Route path='/additem' element={<AddItemForm />} />
           </Route>
         </Routes>
       </Container>
