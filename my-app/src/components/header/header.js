@@ -10,7 +10,8 @@ export default function Header() {
                 display: 'flex',
                 justifyContent: 'center',
                 backgroundColor: 'primary.main',
-                minWidth: '100vw'
+                minWidth: '105vw',
+                ml: -5
             }}
         >
             <img

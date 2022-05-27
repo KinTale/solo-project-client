@@ -19,9 +19,10 @@ export default function NavBar({ role, setLoggedIn }) {
 
     const buttonContainer = {
         backgroundColor: 'background.paper',
-        minWidth: '100vw',
         display: 'flex',
         justifyContent: 'center',
+        minWidth: '105vw',
+        ml: -5,
         '& > *': {
             m: 0.5,
         },
