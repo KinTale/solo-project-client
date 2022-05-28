@@ -9,7 +9,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function AddItemForm({ open, handleClose, resetItem, setResetMembers }) {
+export default function EditItemForm({ open, handleClose, resetItem, setResetMembers }) {
 
     const blankForm = {
         description: '',
@@ -80,21 +80,21 @@ export default function AddItemForm({ open, handleClose, resetItem, setResetMemb
                         name='quantity'
                         onChange={handleChange}
                         placeholder='Quantity' sx={{ bgcolor: 'white' }} />
-                        <TextField
+                    <TextField
                         className='user-form-input'
                         value={item.sponsored}
                         variant='outlined'
                         name='sponsored'
                         onChange={handleChange}
                         placeholder='Sponsored' sx={{ bgcolor: 'white' }} />
-                        <TextField
+                    <TextField
                         className='user-form-input'
                         value={item.price}
                         variant='outlined'
                         name='price'
                         onChange={handleChange}
                         placeholder='Price' sx={{ bgcolor: 'white' }} />
-                        <TextField
+                    <TextField
                         className='user-form-input'
                         value={item.location}
                         variant='outlined'
