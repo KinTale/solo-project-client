@@ -14,6 +14,7 @@ import { useState, useEffect } from 'react';
 import storage from './ultis/storage';
 import Inventory from './components/inventory/inventory';
 import AddItemForm from './components/inventory/add-inventory';
+import EditItemForm from './components/inventory/edit-inventory';
 
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
             <Route path='/login' element={<LogIn setLoggedIn={setLoggedIn} />} />
             <Route path='/addmember' element={<AddMember />} />
             <Route path='/additem' element={<AddItemForm />} />
+            <Route path='/edititem' element={<EditItemForm />} />
           </Route>
         </Routes>
       </Container>

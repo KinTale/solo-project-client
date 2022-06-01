@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { TableCell, TableRow, Button } from '@mui/material';
+import { TableCell, TableRow, Button, Link } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import client from '../../ultis/client';
 import EditItemForm from './edit-inventory';
+
 
 export default function TableRows({ item, resetItem, setResetItem, role, open }) {
     const rowStyle = {
@@ -23,15 +24,17 @@ export default function TableRows({ item, resetItem, setResetItem, role, open })
 
     return (<TableRow
         sx={rowBackground}>
-
+        <EditItemForm open={open} resetItem={resetItem} setResetItem={setResetItem} />
         <TableCell sx={rowStyle} >
 
             {item.id}
         </TableCell>
         <TableCell sx={rowStyle} >
-            {/* <EditItemForm open={open} resetItem={resetItem} setResetItem={setResetItem}  /> */}
-            {role === 'ADMIN' && (
+
+            {role === 'ADMIN' && (<>
+                <Link to='/edititem'><Button>Edit</Button></Link>
                 <Button onClick={() => handleDelete(item.id)} ><DeleteIcon /></Button>
+            </>
             )}
             {item.description}
         </TableCell>

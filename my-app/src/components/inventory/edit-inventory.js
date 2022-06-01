@@ -31,7 +31,7 @@ export default function EditItemForm({ open, handleClose, resetItem, setResetMem
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        client.post('/inventory/additem', item)
+        client.patch('/inventory/edititem', item)
             .then((res) => {
                 setResetMembers(resetItem + 1)
                 setItem(blankForm)
