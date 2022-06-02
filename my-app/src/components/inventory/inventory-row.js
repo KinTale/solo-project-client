@@ -5,7 +5,7 @@ import client from '../../ultis/client';
 import EditItemForm from './edit-inventory';
 
 
-export default function TableRows({ item, resetItem, setResetItem, role, open }) {
+export default function TableRows({ item, resetItem, setResetItem, role, open, handleClose , handleClickOpen}) {
     const rowStyle = {
         color: 'primary.main',
         borderBlockColor: 'primary.main',
@@ -24,15 +24,14 @@ export default function TableRows({ item, resetItem, setResetItem, role, open })
 
     return (<TableRow
         sx={rowBackground}>
-        <EditItemForm open={open} resetItem={resetItem} setResetItem={setResetItem} />
         <TableCell sx={rowStyle} >
 
             {item.id}
         </TableCell>
         <TableCell sx={rowStyle} >
-
+        <EditItemForm open={open} handleClose={handleClose} resetItem={resetItem} setResetItem={setResetItem} item={item}/>
             {role === 'ADMIN' && (<>
-                <Link to='/edititem'><Button>Edit</Button></Link>
+                <Link to='/edititem'><Button onClick={handleClickOpen}>Edit</Button></Link>
                 <Button onClick={() => handleDelete(item.id)} ><DeleteIcon /></Button>
             </>
             )}

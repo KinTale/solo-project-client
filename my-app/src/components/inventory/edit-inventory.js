@@ -9,7 +9,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function EditItemForm({ open, handleClose, resetItem, setResetMembers }) {
+export default function EditItemForm({ open, handleClose, resetItem, setResetMembers, item }) {
 
     const blankForm = {
         description: '',
@@ -18,12 +18,12 @@ export default function EditItemForm({ open, handleClose, resetItem, setResetMem
         price: '',
         location: '',
     }
-    const [item, setItem] = useState(blankForm)
-
+    const [editItem, setEditItem] = useState(item)
+    console.log(editItem)
     const handleChange = (event) => {
         const { value, name } = event.target
-        setItem({
-            ...item,
+        setEditItem({
+            ...editItem,
             [name]: value
         })
     }
@@ -31,10 +31,10 @@ export default function EditItemForm({ open, handleClose, resetItem, setResetMem
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        client.patch('/inventory/edititem', item)
+        client.patch('/inventory/edititem', editItem)
             .then((res) => {
                 setResetMembers(resetItem + 1)
-                setItem(blankForm)
+                setEditItem(blankForm)
                 navigate('/inventory')
                 console.log('added inventory item client', res)
             })
@@ -68,35 +68,35 @@ export default function EditItemForm({ open, handleClose, resetItem, setResetMem
                     <Typography variant='h6' sx={{ color: 'primary.main' }}>Add new member</Typography>
                     <TextField
                         className='user-form-input'
-                        value={item.description}
+                        value={editItem.description}
                         variant='outlined'
                         name='description'
                         onChange={handleChange}
                         placeholder='Description' sx={{ bgcolor: 'white' }} />
                     <TextField
                         className='user-form-input'
-                        value={item.quantity}
+                        value={editItem.quantity}
                         variant='outlined'
                         name='quantity'
                         onChange={handleChange}
                         placeholder='Quantity' sx={{ bgcolor: 'white' }} />
                     <TextField
                         className='user-form-input'
-                        value={item.sponsored}
+                        value={editItem.sponsored}
                         variant='outlined'
                         name='sponsored'
                         onChange={handleChange}
                         placeholder='Sponsored' sx={{ bgcolor: 'white' }} />
                     <TextField
                         className='user-form-input'
-                        value={item.price}
+                        value={editItem.price}
                         variant='outlined'
                         name='price'
                         onChange={handleChange}
                         placeholder='Price' sx={{ bgcolor: 'white' }} />
                     <TextField
                         className='user-form-input'
-                        value={item.location}
+                        value={editItem.location}
                         variant='outlined'
                         name='location'
                         onChange={handleChange}
