@@ -2,7 +2,7 @@ import * as React from 'react';
 import { TableCell, TableRow, Button, Link } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import client from '../../ultis/client';
-import EditItemForm from './edit-inventory';
+
 
 
 export default function TableRows({ item, resetItem, setResetItem, role, open, handleClose , handleClickOpen}) {
@@ -24,14 +24,14 @@ export default function TableRows({ item, resetItem, setResetItem, role, open, h
 
     return (<TableRow
         sx={rowBackground}>
+           
         <TableCell sx={rowStyle} >
 
             {item.id}
         </TableCell>
         <TableCell sx={rowStyle} >
-        <EditItemForm open={open} handleClose={handleClose} resetItem={resetItem} setResetItem={setResetItem} item={item}/>
             {role === 'ADMIN' && (<>
-                <Link to='/edititem'><Button onClick={handleClickOpen}>Edit</Button></Link>
+                <Button size="small" value="EDIT-ITEM" onClick={(e) => handleClickOpen(e, item)}>Edit</Button>
                 <Button onClick={() => handleDelete(item.id)} ><DeleteIcon /></Button>
             </>
             )}

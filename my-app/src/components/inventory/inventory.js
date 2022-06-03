@@ -7,31 +7,38 @@ import Paper from '@mui/material/Paper';
 import TableRows from './inventory-row';
 import TableHeader from './inventory-header';
 import AddItemForm from './add-inventory';
-// import EditItemForm from './edit-inventory';
+
 
 export default function InventoryTable({ role }) {
     const [open, setOpen] = useState(false);
     const [items, setItems] = useState([])
     const [resetItem, setResetItem] = useState(0)
+    const [onClick, setOnClick] = useState("")
+    const [currentEdit, setCurrentEdit] = useState(null)
 
     useEffect(() => {
         client.get('/inventory')
             .then((res) => setItems(res.data.data))
             .catch((err) => console.log(err.response))
     }, [resetItem])
-    console.log('items', items)
+    // console.log('items', items)
 
-    const handleClickOpen = () => {
+    const handleClickOpen = (e, item) => {
+        console.log('open', e.currentTarget.value)
+        setOnClick(e.currentTarget.value)
+        console.log('item', item)
+        if (item) {
+            setCurrentEdit(item)
+        }
         setOpen(true);
     };
-
+    console.log('curr', currentEdit)
     const handleClose = () => {
         setOpen(false);
     };
-    
+
     const fontStyle = {
         color: 'primary.main',
-
     }
     return (
         <Box sx={{
@@ -47,11 +54,10 @@ export default function InventoryTable({ role }) {
                 gap: 5
             }}>
                 <Typography variant='h4' gutterBottom sx={fontStyle}>BCCUK London Branch Property Inventory <hr style={{ border: '1px solid ' }}></hr></Typography>
-                {/* <EditItemForm open={open} handleClose={handleClose} resetItem={resetItem} setResetItem={setResetItem} /> */}
-                <AddItemForm open={open} handleClose={handleClose} resetItem={resetItem} setResetItem={setResetItem}/>
+                <AddItemForm onClick={onClick} open={open} handleClose={handleClose} resetItem={resetItem} setResetItem={setResetItem} currentEdit={currentEdit} setCurrentEdit={setCurrentEdit} />
                 {role === 'ADMIN' && (
                     <Box>
-                        <Link to='/additem'><Button size="small" onClick={handleClickOpen} >Add item</Button></Link>
+                        <Button size="small" value="ADD-ITEM" onClick={(e) => handleClickOpen(e)} >  Add item</Button>
                     </Box>
                 )}
             </Box>
@@ -63,12 +69,11 @@ export default function InventoryTable({ role }) {
             }}>
                 <Table aria-label="simple table">
 
-                    <TableHeader  />
+                    <TableHeader />
                     <TableBody>
                         {items.map((item, index) => (
                             <React.Fragment key={index}>
-                                <TableRows item={item} role={role} resetItem={resetItem} setResetItem={setResetItem} open={open} handleClose={handleClose} onClick={handleClickOpen} />
-                                
+                                <TableRows item={item} role={role} resetItem={resetItem} setResetItem={setResetItem} open={open} handleClose={handleClose} handleClickOpen={handleClickOpen} />
                             </React.Fragment>
                         ))}
                     </TableBody>

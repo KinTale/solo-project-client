@@ -6,10 +6,10 @@ import { TextField, Slide, DialogActions, Dialog, Box, Button, Typography } from
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
-    return <Slide direction="up" ref={ref} {...props} />;
+    return <Slide direction="right" ref={ref} {...props} />;
 });
 
-export default function AddItemForm({ open, handleClose, resetItem, setResetMembers }) {
+export default function AddItemForm({ onClick, open, handleClose, resetItem, setResetMembers, currentEdit, setCurrentEdit }) {
 
     const blankForm = {
         description: '',
@@ -18,7 +18,7 @@ export default function AddItemForm({ open, handleClose, resetItem, setResetMemb
         price: '',
         location: '',
     }
-    const [item, setItem] = useState(blankForm)
+    const [item, setItem] = useState(currentEdit != null ? currentEdit : blankForm)
 
     const handleChange = (event) => {
         const { value, name } = event.target
@@ -28,17 +28,31 @@ export default function AddItemForm({ open, handleClose, resetItem, setResetMemb
         })
     }
     let navigate = useNavigate();
-
+console.log('curr add',item)
     const handleSubmit = (event) => {
         event.preventDefault()
-        client.post('/inventory/additem', item)
-            .then((res) => {
-                setResetMembers(resetItem + 1)
-                setItem(blankForm)
-                navigate('/inventory')
-                console.log('added inventory item client', res)
-            })
-            .catch((err) => console.log(err.response))
+
+        if (onClick === 'ADD-ITEM') {
+            client.post('/inventory/additem', item)
+                .then((res) => {
+                    setResetMembers(resetItem + 1)
+                    setItem(blankForm)
+                    navigate('/inventory')
+                    console.log('added inventory item client', res)
+                })
+                .catch((err) => console.log(err.response))
+        } else if (onClick === "EDIT-ITEM") {
+
+            client.patch('/inventory/edititem', item)
+                .then((res) => {
+                    setResetMembers(resetItem + 1)
+                    setItem(blankForm)
+                    navigate('/inventory')
+                    console.log('pacthed item client', res)
+                })
+                .catch((err) => console.log(err.response))
+        }
+
 
     }
 
@@ -80,21 +94,21 @@ export default function AddItemForm({ open, handleClose, resetItem, setResetMemb
                         name='quantity'
                         onChange={handleChange}
                         placeholder='Quantity' sx={{ bgcolor: 'white' }} />
-                        <TextField
+                    <TextField
                         className='user-form-input'
                         value={item.sponsored}
                         variant='outlined'
                         name='sponsored'
                         onChange={handleChange}
                         placeholder='Sponsored' sx={{ bgcolor: 'white' }} />
-                        <TextField
+                    <TextField
                         className='user-form-input'
                         value={item.price}
                         variant='outlined'
                         name='price'
                         onChange={handleChange}
                         placeholder='Price' sx={{ bgcolor: 'white' }} />
-                        <TextField
+                    <TextField
                         className='user-form-input'
                         value={item.location}
                         variant='outlined'
