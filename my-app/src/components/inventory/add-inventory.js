@@ -1,12 +1,12 @@
 import React from 'react';
 import client from '../../ultis/client';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { TextField, Slide, DialogActions, Dialog, Box, Button, Typography } from '@mui/material';
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
-    return <Slide direction="right" ref={ref} {...props} />;
+    return <Slide direction="up" ref={ref} {...props} />;
 });
 
 export default function AddItemForm({ onClick, open, handleClose, resetItem, setResetMembers, currentEdit, setCurrentEdit }) {
@@ -18,7 +18,11 @@ export default function AddItemForm({ onClick, open, handleClose, resetItem, set
         price: '',
         location: '',
     }
-    const [item, setItem] = useState(currentEdit != null ? currentEdit : blankForm)
+    const [item, setItem] = useState( blankForm)
+
+    useEffect(() => {
+        setItem(currentEdit ? currentEdit : blankForm)
+    }, [currentEdit])
 
     const handleChange = (event) => {
         const { value, name } = event.target
@@ -27,8 +31,10 @@ export default function AddItemForm({ onClick, open, handleClose, resetItem, set
             [name]: value
         })
     }
+    console.log('EDITForm', item, currentEdit)
+
     let navigate = useNavigate();
-console.log('curr add',item)
+
     const handleSubmit = (event) => {
         event.preventDefault()
 

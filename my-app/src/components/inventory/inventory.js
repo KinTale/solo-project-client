@@ -21,8 +21,7 @@ export default function InventoryTable({ role }) {
             .then((res) => setItems(res.data.data))
             .catch((err) => console.log(err.response))
     }, [resetItem])
-    // console.log('items', items)
-
+  
     const handleClickOpen = (e, item) => {
         console.log('open', e.currentTarget.value)
         setOnClick(e.currentTarget.value)
@@ -31,12 +30,15 @@ export default function InventoryTable({ role }) {
             setCurrentEdit(item)
         }
         setOpen(true);
-    };
-    console.log('curr', currentEdit)
-    const handleClose = () => {
-        setOpen(false);
+        console.log('curr', currentEdit)
     };
 
+    const handleClose = () => {
+        setCurrentEdit(null)
+        setOpen(false);
+      
+    };
+    
     const fontStyle = {
         color: 'primary.main',
     }
