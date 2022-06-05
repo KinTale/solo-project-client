@@ -21,7 +21,7 @@ export default function InventoryTable({ role }) {
             .then((res) => setItems(res.data.data))
             .catch((err) => console.log(err.response))
     }, [resetItem])
-  
+  console.log('reset', resetItem)
     const handleClickOpen = (e, item) => {
         console.log('open', e.currentTarget.value)
         setOnClick(e.currentTarget.value)

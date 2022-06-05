@@ -40,7 +40,7 @@ export default function NavBar({ role, setLoggedIn }) {
                 <Link to='/' style={linkDeco}> <NavButton sx={{ fontWeight: 'bold', }} >Home</NavButton></Link>
                 <Link to='/aboutus' style={linkDeco}> <NavButton sx={{ fontWeight: 'bold', }}>About us</NavButton></Link>
                 <Link to='/members' style={linkDeco}> <NavButton sx={{ fontWeight: 'bold', }}>Members</NavButton></Link>
-                {/* <NavButton >events</NavButton> */}
+                <Link to='/event' style={linkDeco}> <NavButton sx={{ fontWeight: 'bold', }}>Event</NavButton></Link>
                 <Link to='/inventory' style={linkDeco}> <NavButton sx={{ fontWeight: 'bold', }}>Inventory</NavButton></Link>
                 <Link to='/contactus' style={linkDeco}> <NavButton sx={{ fontWeight: 'bold', }}>Contact us</NavButton></Link>
                 {role === 'ADMIN' && (

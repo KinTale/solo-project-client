@@ -1,6 +1,5 @@
 import React from 'react';
 import client from '../../ultis/client';
-import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { TextField, Slide, DialogActions, Dialog, Box, Button, Typography } from '@mui/material';
 
@@ -9,7 +8,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function AddItemForm({ onClick, open, handleClose, resetItem, setResetMembers, currentEdit, setCurrentEdit }) {
+export default function AddItemForm({ onClick, open, handleClose, resetItem, setResetItem, currentEdit, setCurrentEdit }) {
 
     const blankForm = {
         description: '',
@@ -18,7 +17,7 @@ export default function AddItemForm({ onClick, open, handleClose, resetItem, set
         price: '',
         location: '',
     }
-    const [item, setItem] = useState( blankForm)
+    const [item, setItem] = useState(blankForm)
 
     useEffect(() => {
         setItem(currentEdit ? currentEdit : blankForm)
@@ -33,33 +32,29 @@ export default function AddItemForm({ onClick, open, handleClose, resetItem, set
     }
     console.log('EDITForm', item, currentEdit)
 
-    let navigate = useNavigate();
 
     const handleSubmit = (event) => {
         event.preventDefault()
+        console.log('form SUBMITTED', onClick)
 
         if (onClick === 'ADD-ITEM') {
             client.post('/inventory/additem', item)
                 .then((res) => {
-                    setResetMembers(resetItem + 1)
+                    setResetItem(resetItem + 1)
                     setItem(blankForm)
-                    navigate('/inventory')
                     console.log('added inventory item client', res)
                 })
-                .catch((err) => console.log(err.response))
-        } else if (onClick === "EDIT-ITEM") {
-
+                .catch((err) => console.log(err))
+        }
+        if (onClick === 'EDIT-ITEM') {
             client.patch('/inventory/edititem', item)
                 .then((res) => {
-                    setResetMembers(resetItem + 1)
+                    setResetItem(resetItem + 1)
                     setItem(blankForm)
-                    navigate('/inventory')
                     console.log('pacthed item client', res)
                 })
-                .catch((err) => console.log(err.response))
+                .catch((err) => console.log(err))
         }
-
-
     }
 
     const formContainer = {
