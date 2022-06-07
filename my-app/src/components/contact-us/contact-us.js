@@ -21,7 +21,8 @@ export default function ContactUs() {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        mt: 5
+        mt: 5,
+        mb: 10
     }
     const cardContainer = {
         display: 'flex',

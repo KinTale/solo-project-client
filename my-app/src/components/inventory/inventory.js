@@ -21,7 +21,7 @@ export default function InventoryTable({ role }) {
             .then((res) => setItems(res.data.data))
             .catch((err) => console.log(err.response))
     }, [resetItem])
-  console.log('reset', resetItem)
+    console.log('reset', resetItem)
     const handleClickOpen = (e, item) => {
         console.log('open', e.currentTarget.value)
         setOnClick(e.currentTarget.value)
@@ -36,9 +36,9 @@ export default function InventoryTable({ role }) {
     const handleClose = () => {
         setCurrentEdit(null)
         setOpen(false);
-      
+
     };
-    
+
     const fontStyle = {
         color: 'primary.main',
     }
@@ -48,7 +48,8 @@ export default function InventoryTable({ role }) {
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            mt: 5
+            mt: 5,
+            mb: 10
         }}>
             <Box sx={{
                 display: 'flex',

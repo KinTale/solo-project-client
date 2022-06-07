@@ -9,7 +9,7 @@ export default function AboutUs() {
 
     const paperStyle = {
         width: 800,
-        mb: 50,
+        mb: 10,
         backgroundColor: 'background.paper',
         padding: 5,
         color: 'primary.main',

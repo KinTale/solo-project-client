@@ -11,7 +11,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 export default function MembersList({ role }) {
     const paperStyle = {
         width: 800,
-        mb: 50,
+        mb: 10,
         backgroundColor: 'background.paper',
         padding: 5,
         color: 'primary.main',

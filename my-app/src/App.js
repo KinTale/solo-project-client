@@ -14,7 +14,7 @@ import { useState, useEffect } from 'react';
 import storage from './ultis/storage';
 import Inventory from './components/inventory/inventory';
 import Event from './components/event/event';
-
+import Footer from './components/footer/footer';
 
 
 function App() {
@@ -47,6 +47,7 @@ function App() {
             <Route path='/event' element={<Event />} />
           </Route>
         </Routes>
+        <Footer />
       </Container>
     </>
 
