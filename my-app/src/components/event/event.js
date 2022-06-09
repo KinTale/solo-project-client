@@ -11,7 +11,7 @@ export default function Event() {
             .then((res) => setEvents(res.data.data))
             .catch((err) => console.log(err.response))
     }, [resetItem])
-    
+
 console.log('event', events)
     return (
         <></>
