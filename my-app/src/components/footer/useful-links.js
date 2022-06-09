@@ -21,7 +21,7 @@ export default function UsefulLinks() {
                         </ListItemButton>
                     </ListItem>
                     <ListItem disablePadding>
-                        <ListItemButton component="a" href="#simple-list">
+                        <ListItemButton component="a" href="http://bccuk.org/wp-content/uploads/2020/03/membership_form-1.pdf">
                             <ListItemText primary="New membership form download" />
                         </ListItemButton>
                     </ListItem>
