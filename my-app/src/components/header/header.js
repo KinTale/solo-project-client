@@ -10,13 +10,16 @@ export default function Header() {
                 display: 'flex',
                 justifyContent: 'center',
                 backgroundColor: 'primary.main',
-                minWidth: '105vw',
-                ml: -5
+                // maxWidth: '105vw',
+                // ml: -5
             }}
         >
             <img
                 src={Logo}
                 alt='logo'
+                // maxWidth='105vw'
+                height='fit-content'
+                // alignItem='stretch'
             />
         </Box>
     )

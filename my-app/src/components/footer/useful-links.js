@@ -2,12 +2,12 @@ import { Box, Grid, List, ListItem, ListItemText, ListItemButton, Typography, Li
 import { Link as RouterLink } from "react-router-dom";
 export default function UsefulLinks() {
     return (
-        <Box sx={{ width: '100%', maxWidth: 360, color: 'primary.light' }}>
+        <Grid item justifyContent='center'>
+        <Box sx={{ color: 'primary.light', maxWidth: 370, mt: 1, mb: 1 }}>
             <nav aria-label="main mailbox folders">
                 <List>
                     <ListItem disablePadding>
                         <ListItemText primary="Useful Links" primaryTypographyProps={{ color: 'secondary.main', variant: 'h6' }} />
-
                     </ListItem>
                     <Divider />
                     <ListItem disablePadding>
@@ -31,5 +31,6 @@ export default function UsefulLinks() {
 
 
         </Box>
+        </Grid>
     )
 }

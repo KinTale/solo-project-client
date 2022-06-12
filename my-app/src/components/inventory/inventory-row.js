@@ -2,7 +2,7 @@ import * as React from 'react';
 import { TableCell, TableRow, Button, Link } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import client from '../../ultis/client';
-
+import EditIcon from '@mui/icons-material/Edit';
 
 
 export default function TableRows({ item, resetItem, setResetItem, role, open, handleClose , handleClickOpen}) {
@@ -31,7 +31,7 @@ export default function TableRows({ item, resetItem, setResetItem, role, open, h
         </TableCell>
         <TableCell sx={rowStyle} >
             {role === 'ADMIN' && (<>
-                <Button size="small" value="EDIT-ITEM" onClick={(e) => handleClickOpen(e, item)}>Edit</Button>
+                <Button size="small" value="EDIT-ITEM" startIcon={<EditIcon/>} onClick={(e) => handleClickOpen(e, item)}>Edit</Button>
                 <Button onClick={() => handleDelete(item.id)} ><DeleteIcon /></Button>
             </>
             )}

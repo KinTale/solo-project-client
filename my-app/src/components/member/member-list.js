@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import AddMemberForm from './add-member';
 import client from '../../ultis/client';
 import DeleteIcon from '@mui/icons-material/Delete';
+import AddBoxIcon from '@mui/icons-material/AddBox';
 
 
 export default function MembersList({ role }) {
@@ -40,7 +41,7 @@ export default function MembersList({ role }) {
             .then((res) => setResetMembers(resetMembers + 1))
             .catch((err) => console.log(err.response))
     };
-    
+
     console.log('state', currenMembers)
     return (
         <Box sx={{
@@ -55,7 +56,7 @@ export default function MembersList({ role }) {
                 <Typography variant='h4' gutterBottom >Current members
                     {role === 'ADMIN' && (
                         <Box>
-                            <Link to='/addmember'><Button size="small" onClick={handleClickOpen} >Add Member</Button></Link>
+                            <Button size="small" startIcon={<AddBoxIcon/>} onClick={handleClickOpen} >Add Member</Button>
                         </Box>
                     )}
                     <hr style={{ border: '1px solid ' }}></hr></Typography>

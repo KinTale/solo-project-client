@@ -8,7 +8,7 @@ import ContactUs from './components/contact-us/contact-us';
 import MembersList from './components/member/member-list';
 import AddMember from './components/member/add-member';
 import LogIn from './components/log-in/log-in';
-import { Container } from '@mui/material';
+import { Container, Grid, Box } from '@mui/material';
 import '../src/app.css'
 import { useState, useEffect } from 'react';
 import storage from './ultis/storage';
@@ -28,12 +28,24 @@ function App() {
   if (loggedIn === null) {
     return <div className='App'></div>;
   }
-
+  const gridStyle = {
+    // justifyContent: 'center',
+    // alignItem: 'center',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+    ml: 'auto'
+  }
   return (
 
-    <>
-      <Container className='app'>
+    <Box >
+
+      <Grid container
+        columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+        sx={gridStyle} >
         <Header />
+
+
         <NavBar role={loggedIn.role} setLoggedIn={setLoggedIn} />
         <Routes>
           <Route>
@@ -47,9 +59,16 @@ function App() {
             <Route path='/event' element={<Event />} />
           </Route>
         </Routes>
-        <Footer />
-      </Container>
-    </>
+        <Grid item align="center" >
+          <Footer />
+
+        </Grid>
+
+
+      </Grid>
+    </Box>
+
+
 
   );
 }

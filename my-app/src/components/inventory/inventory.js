@@ -7,7 +7,7 @@ import Paper from '@mui/material/Paper';
 import TableRows from './inventory-row';
 import TableHeader from './inventory-header';
 import AddItemForm from './add-inventory';
-
+import AddBoxIcon from '@mui/icons-material/AddBox';
 
 export default function InventoryTable({ role }) {
     const [open, setOpen] = useState(false);
@@ -60,7 +60,7 @@ export default function InventoryTable({ role }) {
                 <AddItemForm onClick={onClick} open={open} handleClose={handleClose} resetItem={resetItem} setResetItem={setResetItem} currentEdit={currentEdit} setCurrentEdit={setCurrentEdit} />
                 {role === 'ADMIN' && (
                     <Box>
-                        <Button size="small" value="ADD-ITEM" onClick={(e) => handleClickOpen(e)} >  Add item</Button>
+                        <Button size="small" value="ADD-ITEM" startIcon={<AddBoxIcon/>} onClick={(e) => handleClickOpen(e)} >  Add item</Button>
                     </Box>
                 )}
             </Box>
