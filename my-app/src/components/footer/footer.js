@@ -8,9 +8,10 @@ export default function Footer() {
 
         <Grid container
             align="center"
+            direction='row'
             sx={{ backgroundColor: 'primary.main' }}>
 
-            <Grid item sm={3} lg={4}>{/* SPACE */}</Grid>
+            <Grid item sm={3} lg={4}/>
 
             <Grid item xs={12} sm={3}  lg={2} >
                 <UsefulLinks />
@@ -19,7 +20,7 @@ export default function Footer() {
                 <Donation />
             </Grid>
             
-            <Grid item sm={3} lg={4}>{/* SPACE */}</Grid>
+            <Grid item sm={3} lg={4}/>
         </Grid>
     )
 }

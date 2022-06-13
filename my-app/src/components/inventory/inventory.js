@@ -8,6 +8,7 @@ import TableRows from './inventory-row';
 import TableHeader from './inventory-header';
 import AddItemForm from './add-inventory';
 import AddBoxIcon from '@mui/icons-material/AddBox';
+import EditIcon from '@mui/icons-material/Edit';
 
 export default function InventoryTable({ role }) {
     const [open, setOpen] = useState(false);
@@ -68,7 +69,7 @@ export default function InventoryTable({ role }) {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                width: 1100
+                maxWidth: 1100
             }}>
                 <Table aria-label="simple table">
 

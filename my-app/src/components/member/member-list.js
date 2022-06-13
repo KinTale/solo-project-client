@@ -7,7 +7,7 @@ import AddMemberForm from './add-member';
 import client from '../../ultis/client';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddBoxIcon from '@mui/icons-material/AddBox';
-
+import Member from '../../images/member.jpeg'
 
 export default function MembersList({ role }) {
     const paperStyle = {
@@ -70,7 +70,7 @@ export default function MembersList({ role }) {
                     {currenMembers.map((member, index) => (
                         <ImageListItem key={index} sx={{ display: 'flex', flexWrap: 'wrap', p: 1, width: 150, mr: 5 }}>
                             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                                <Avatar variant="square" sx={{ width: 84, height: 84 }}></Avatar>
+                                <img src={Member} alt='member logo' width= '84' height='84'/>
                                 {role === 'ADMIN' && (
                                     <Button onClick={() => handleDelete(member.id)} ><DeleteIcon /></Button>
                                 )}

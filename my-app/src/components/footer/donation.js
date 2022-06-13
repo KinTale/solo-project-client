@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import DonationLogo from '../../images/donation.jpeg'
 export default function Donation() {
     return (
-        <Card sx={{ width: 350, mt: 1, mb: 1 }}>
+        <Card elevation={5} sx={{ width: 350, mt: 1, mb: 1 }}>
             <CardMedia
                 component="img"
                 height="140"
