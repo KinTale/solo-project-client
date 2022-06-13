@@ -59,10 +59,9 @@ function App() {
             <Route path='/event' element={<Event />} />
           </Route>
         </Routes>
-        <Grid item align="center" >
+    
           <Footer />
 
-        </Grid>
 
 
       </Grid>

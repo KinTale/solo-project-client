@@ -22,7 +22,7 @@ export default function NavBar({ role, setLoggedIn }) {
         display: 'flex',
         justifyContent: 'center',
         minWidth: '105vw',
-        ml: -5,
+        position:"sticky",
         '& > *': {
             m: 0.5,
         },

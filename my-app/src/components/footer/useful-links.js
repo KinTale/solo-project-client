@@ -1,9 +1,9 @@
-import { Box, Grid, List, ListItem, ListItemText, ListItemButton, Typography, Link, Divider } from "@mui/material"
+import { Box, Grid, List, ListItem, ListItemText, ListItemButton, Divider } from "@mui/material"
 import { Link as RouterLink } from "react-router-dom";
 export default function UsefulLinks() {
     return (
         <Grid item justifyContent='center'>
-        <Box sx={{ color: 'primary.light', maxWidth: 370, mt: 1, mb: 1 }}>
+        <Box sx={{ color: 'primary.light',  maxWidth: 370, minWidth: 270, mt: 1, mb: 1 }}>
             <nav aria-label="main mailbox folders">
                 <List>
                     <ListItem disablePadding>
