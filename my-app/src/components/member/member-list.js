@@ -1,7 +1,7 @@
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
-import { Avatar, Box, Typography, Paper, Button, Link } from '@mui/material';
+import { Box, Typography, Paper, Button } from '@mui/material';
 import { useState, useEffect } from 'react';
 import AddMemberForm from './add-member';
 import client from '../../ultis/client';

@@ -2,13 +2,13 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react'
 import client from '../../ultis/client';
-import { Box, Table, TableBody, TableContainer, Link, Button, Typography } from '@mui/material';
+import { Box, Table, TableBody, TableContainer, Button, Typography } from '@mui/material';
 import Paper from '@mui/material/Paper';
 import TableRows from './inventory-row';
 import TableHeader from './inventory-header';
 import AddItemForm from './add-inventory';
 import AddBoxIcon from '@mui/icons-material/AddBox';
-import EditIcon from '@mui/icons-material/Edit';
+
 
 export default function InventoryTable({ role }) {
     const [open, setOpen] = useState(false);
@@ -23,6 +23,8 @@ export default function InventoryTable({ role }) {
             .catch((err) => console.log(err.response))
     }, [resetItem])
     console.log('reset', resetItem)
+
+
     const handleClickOpen = (e, item) => {
         console.log('open', e.currentTarget.value)
         setOnClick(e.currentTarget.value)
