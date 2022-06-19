@@ -9,7 +9,7 @@ import { AppBar, Button, ButtonGroup } from '@mui/material'
 export default function NavBar({ role, setLoggedIn }) {
 
     const NavButton = styled(Button)(({ theme }) => ({
-        color: theme.palette.primary.main,
+        color: theme.palette.background.paper,
         '&:hover': {
             color: theme.palette.primary.light,
             backgroundColor: theme.palette.primary.main
@@ -18,11 +18,12 @@ export default function NavBar({ role, setLoggedIn }) {
     const linkDeco = { textDecoration: 'none' }
 
     const buttonContainer = {
-        backgroundColor: 'background.paper',
+        backgroundColor: 'primary.main',
         display: 'flex',
         justifyContent: 'center',
         minWidth: '105vw',
         alignItems: 'center',
+        boxShadow:12,
         '& > *': {
             m: 0.5,
         },

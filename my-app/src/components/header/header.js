@@ -9,16 +9,19 @@ export default function Header() {
             sx={{
                 display: 'flex',
                 justifyContent: 'center',
+                alignItems: 'center',
                 backgroundColor: 'primary.main',
-                width: '100vw',
-                minWidth:750
+                width: '110vw',
+                minWidth: 650
             }}
         >
-            {/* <img
+            <img
                 src={Logo}
                 alt='logo'
-            /> */}
-            <Typography variant='h2' >The Buddhist Community Center UK London Branch</Typography>
+            />
+            <Typography variant='h4' >The Buddhist Community Center UK </Typography>
+            <Typography>  &nbsp;</Typography>
+            <Typography variant='h4' >London Branch</Typography>
         </Box>
     )
 

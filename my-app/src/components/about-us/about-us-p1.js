@@ -4,7 +4,7 @@ import { Typography } from '@mui/material'
 export default function AboutUsOne() {
     return (<>
 
-        <Typography variant='h4' gutterBottom >About us <hr style={ {border:'1px solid '}}></hr></Typography>
+        <Typography variant='h5' gutterBottom >About us <hr style={ {border:'1px solid '}}></hr></Typography>
         <Typography variant='body2' paragraph gutterBottom >
             The Buddhist Community Centre UK (BCCUK) was founded in 2007 with a vision to establish a monastery to serve the growing Buddhist Community in the Southeast region of the United Kingdom. After several years of hard work, dedication and fund raising activities by our dedicated committee members, a former social club was purchased and transformed into a traditional monastery.
         </Typography>

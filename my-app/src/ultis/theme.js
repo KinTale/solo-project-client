@@ -16,8 +16,14 @@ export const theme = createTheme({
       }
  },
 typography:{
-    h2: {
-        fontFamily:'airel',
+    h4: {
+        fontFamily: [
+            "Nunito",
+            "Roboto",
+            "Helvetica Neue",
+            "Arial",
+            "sans-serif"
+          ].join(","),
         fontWeight:'bold',
         color:'#D8A773'
     }
