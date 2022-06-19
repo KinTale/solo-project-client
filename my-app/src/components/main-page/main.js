@@ -1,18 +1,21 @@
 import Slider from "./image-slider";
-import AboutUsCard from "./card";
-import { Grid } from "@mui/material";
+import BasicCard from "./card";
+import { Box } from "@mui/system";
+
+
 export default function Main() {
-    return (<>
-        <Grid container direction='column' >
+    const aboutUsContainer = {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        boxShadow: 15
+    }
+    return (
+        <Box sx={aboutUsContainer} >
+            <Slider />
+            <BasicCard />
+        </Box>
 
-        {/* <Grid item sm={3} lg={4}/> */}
-
-            <Grid item xs={12} sm={3}  lg={2}> <Slider /> </Grid>
-            <Grid item xs={12} sm={3}  lg={2}> <AboutUsCard /> </Grid>
-{/* 
-            <Grid item sm={3} lg={4}/> */}
-
-        </Grid>
-    </>
     )
 }

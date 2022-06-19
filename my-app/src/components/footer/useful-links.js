@@ -4,7 +4,6 @@ export default function UsefulLinks() {
     return (
         <Grid item justifyContent='center'>
         <Box sx={{ color: 'primary.light',  maxWidth: 370, minWidth: 270, mt: 1, mb: 1 }}>
-            <nav aria-label="main mailbox folders">
                 <List>
                     <ListItem disablePadding>
                         <ListItemText primary="Useful Links" primaryTypographyProps={{ color: 'secondary.main', variant: 'h6' }} />
@@ -26,9 +25,6 @@ export default function UsefulLinks() {
                         </ListItemButton>
                     </ListItem>
                 </List>
-
-            </nav>
-
 
         </Box>
         </Grid>

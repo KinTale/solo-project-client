@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box } from '@mui/system'
 import Logo from '../../images/Logo.png'
-
+import { Typography } from '@mui/material';
 export default function Header() {
 
     return (
@@ -10,17 +10,15 @@ export default function Header() {
                 display: 'flex',
                 justifyContent: 'center',
                 backgroundColor: 'primary.main',
-                // maxWidth: '105vw',
-                // ml: -5
+                width: '100vw',
+                minWidth:750
             }}
         >
-            <img
+            {/* <img
                 src={Logo}
                 alt='logo'
-                // maxWidth='105vw'
-                height='fit-content'
-                // alignItem='stretch'
-            />
+            /> */}
+            <Typography variant='h2' >The Buddhist Community Center UK London Branch</Typography>
         </Box>
     )
 

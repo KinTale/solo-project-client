@@ -58,9 +58,10 @@ export default function Slider() {
         }
     }
     const sliderContainer = {
+        ml:-10,
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
     }
 
     const imageStyle = {

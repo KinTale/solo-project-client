@@ -8,7 +8,7 @@ import ContactUs from './components/contact-us/contact-us';
 import MembersList from './components/member/member-list';
 import AddMember from './components/member/add-member';
 import LogIn from './components/log-in/log-in';
-import { Grid} from '@mui/material';
+import { Grid, Box } from '@mui/material';
 import '../src/app.css'
 import { useState, useEffect } from 'react';
 import storage from './ultis/storage';
@@ -29,31 +29,29 @@ function App() {
     return <div className='App'></div>;
   }
   const gridStyle = {
+    display: 'flex',
     flexDirection: 'column',
+    alignItems: 'center',
     justifyContent: 'center',
-    flexWrap: 'wrap',
-    ml: 'auto'
   }
   return (
-      <Grid container
-        columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-        sx={gridStyle} >
-        <Header />
-        <NavBar role={loggedIn.role} setLoggedIn={setLoggedIn} />
-        <Routes>
-          <Route>
-            <Route path='/' element={<Main />} />
-            <Route path='/aboutus' element={<AboutUs />} />
-            <Route path='/members' element={<MembersList role={loggedIn.role} />} />
-            <Route path='/inventory' element={<Inventory role={loggedIn.role} />} />
-            <Route path='/contactus' element={<ContactUs />} />
-            <Route path='/login' element={<LogIn setLoggedIn={setLoggedIn} />} />
-            <Route path='/addmember' element={<AddMember />} />
-            <Route path='/event' element={<Event />} />
-          </Route>
-        </Routes>
-        <Footer />
-      </Grid>
+    <Box sx={gridStyle} >
+      <Header />
+      <NavBar role={loggedIn.role} setLoggedIn={setLoggedIn} />
+      <Routes>
+        <Route>
+          <Route path='/' element={<Main />} />
+          <Route path='/aboutus' element={<AboutUs />} />
+          <Route path='/members' element={<MembersList role={loggedIn.role} />} />
+          <Route path='/inventory' element={<Inventory role={loggedIn.role} />} />
+          <Route path='/contactus' element={<ContactUs />} />
+          <Route path='/login' element={<LogIn setLoggedIn={setLoggedIn} />} />
+          <Route path='/addmember' element={<AddMember />} />
+          <Route path='/event' element={<Event />} />
+        </Route>
+      </Routes>
+      <Footer />
+    </Box>
   );
 }
 
