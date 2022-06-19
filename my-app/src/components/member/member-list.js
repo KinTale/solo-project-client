@@ -53,7 +53,7 @@ export default function MembersList({ role }) {
         }}>
             <AddMemberForm open={open} handleClose={handleClose} resetMembers={resetMembers} setResetMembers={setResetMembers} />
             <Paper elevation={3} sx={paperStyle}>
-                <Typography variant='h4' gutterBottom >Current members
+                <Typography variant='h5' gutterBottom >Current members
                     {role === 'ADMIN' && (
                         <Box>
                             <Button size="small" startIcon={<AddBoxIcon/>} onClick={handleClickOpen} >Add Member</Button>
